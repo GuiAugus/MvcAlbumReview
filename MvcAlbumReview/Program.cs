@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MvcAlbumReview.Data;
+using MvcAlbumReview.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<MvcAlbumReviewContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MvcAlbumReviewContext") ?? throw new InvalidOperationException("Connection string 'MvcAlbumReviewContext' not found.")));
@@ -9,6 +11,13 @@ builder.Services.AddDbContext<MvcAlbumReviewContext>(options =>
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    SeedData.Initialize(services);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
