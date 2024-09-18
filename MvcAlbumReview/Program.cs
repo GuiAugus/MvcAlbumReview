@@ -1,4 +1,9 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using MvcAlbumReview.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<MvcAlbumReviewContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MvcAlbumReviewContext") ?? throw new InvalidOperationException("Connection string 'MvcAlbumReviewContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
