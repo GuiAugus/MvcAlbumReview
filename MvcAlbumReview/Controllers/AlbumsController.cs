@@ -20,10 +20,38 @@ namespace MvcAlbumReview.Controllers
         }
 
         // GET: Albums
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string albumGenre, string searchString)
         {
-            return View(await _context.Album.ToListAsync());
+            if (_context.Album == null)
+            {
+                return Problem("Entity set 'MvcAlbumContext.Album'  is null.");
+            }
+
+            IQueryable<string> genreQuery = from m in _context.Album
+                                            orderby m.Genre
+                                            select m.Genre;
+            var albums = from m in _context.Album
+                         select m;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                albums = albums.Where(s => s.Title!.ToUpper().Contains(searchString.ToUpper()));
+            }
+
+            if (!string.IsNullOrEmpty(albumGenre))
+            {
+                albums = albums.Where(x => x.Genre == albumGenre);
+            }
+
+            var movieGenreVM = new AlbumGenreViewModel
+            {
+                Genres = new SelectList(await genreQuery.Distinct().ToListAsync()),
+                albums = await albums.ToListAsync()
+            };
+
+            return View(movieGenreVM);
         }
+
 
         // GET: Albums/Details/5
         public async Task<IActionResult> Details(int? id)
