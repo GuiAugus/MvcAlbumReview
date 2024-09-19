@@ -24,7 +24,8 @@ namespace MvcAlbumReview.Models
                             Title = "Sobrevivendo no Inferno",
                             ReleaseDate = DateTime.Parse("1997-12-1"),
                             Genre = "RAP",
-                            Rating = 9.7M
+                            Rating = 9.7M,
+                            Review = ""
                         },
                         new Album
                         {

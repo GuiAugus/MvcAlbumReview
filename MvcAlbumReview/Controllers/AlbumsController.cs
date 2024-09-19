@@ -82,7 +82,7 @@ namespace MvcAlbumReview.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ArtistName,Title,ReleaseDate,Genre,Rating")] Album album)
+        public async Task<IActionResult> Create([Bind("Id,ArtistName,Title,ReleaseDate,Genre,Rating,Review")] Album album)
         {
             if (ModelState.IsValid)
             {
@@ -114,7 +114,7 @@ namespace MvcAlbumReview.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ArtistName,Title,ReleaseDate,Genre,Rating")] Album album)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ArtistName,Title,ReleaseDate,Genre,Rating,Review")] Album album)
         {
             if (id != album.Id)
             {
