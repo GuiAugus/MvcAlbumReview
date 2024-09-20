@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MvcAlbumReview")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+74c5825fcab46712a8d62256615993f4e947c8f6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+69ab0e71af82994ea6efcacb069ab7baee31cfab")]
 [assembly: System.Reflection.AssemblyProductAttribute("MvcAlbumReview")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MvcAlbumReview")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
